@@ -31,7 +31,7 @@ int main(){
     b*=(d? (1/c):c);
     c=1;
     d=f=0;
-    for(;isdigit(formula[i]);i++);
+    for(;isdigit(formula[i])||formula[i]=='.';i++);
     i--;
    }
   }
