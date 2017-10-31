@@ -21,7 +21,7 @@ int main(void){
         formula[jj]=tmp;
         formula[jj+1]='\0';
         if(tmp==127&&jj>0){jj--;formula[jj]='\0';
-        }else{jj++;}
+        }else if(!(jj!=1&&tmp==127)){jj++;}
             if(formula[0]=='+'||formula[0]=='-'||formula[0]=='*'||formula[0]=='/')b=a;
             else b=1;
             c=1;
@@ -50,7 +50,7 @@ int main(void){
                 }
             }
             a+=b;
-            if((formula[0]==10||formula[0]==127||formula[0]=='\0'||tmp=='+'||tmp=='-')){a--;}
+            if(((formula[0]==10||formula[0]==127||formula[0]=='\0'||tmp=='+'||tmp=='-'))){a--;}
             printf("\033[2K\r%lf=%s",a,formula);//}
         }
     tcsetattr(STDIN_FILENO, TCSANOW, &save);
