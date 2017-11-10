@@ -1,17 +1,16 @@
 #include<stdio.h>
 #include<termios.h>
-#include<unistd.h>
 #include<stdlib.h>
 #include<math.h>
 #include<ctype.h>
 struct termios term;
 struct termios save;
 int main(void){
-    tcgetattr(STDIN_FILENO, &term);
+    tcgetattr(0, &term);
     save = term;
     term.c_lflag &= ~ICANON;
     term.c_lflag &= ~ECHO;
-    tcsetattr(STDIN_FILENO, TCSANOW, &term);
+    tcsetattr(0, TCSANOW, &term);
         char tmp,formula[256]={0};
         double a=0,b=1,c=1;
         int jj=0,d=0,f=0;
@@ -20,8 +19,7 @@ int main(void){
         tmp = fgetc(stdin);
         formula[jj]=tmp;
         formula[jj+1]='\0';
-        if(tmp==127&&jj>0){jj--;formula[jj]='\0';
-        }else if(!(jj!=1&&tmp==127)){jj++;}
+        tmp==127? (formula[(jj? --jj:jj)]='\0'):(jj++);
             if(formula[0]=='+'||formula[0]=='-'||formula[0]=='*'||formula[0]=='/')b=a;
             else b=1;
             c=1;
@@ -50,8 +48,8 @@ int main(void){
                 }
             }
             a+=b;
-            if(((formula[0]==10||formula[0]==127||formula[0]=='\0'||tmp=='+'||tmp=='-'))){a--;}
+            if((formula[0]==10||formula[0]==127||formula[0]=='\0'||tmp=='+'||tmp=='-')){a--;}
             printf("\033[2K\r%lf=%s",a,formula);//}
         }
-    tcsetattr(STDIN_FILENO, TCSANOW, &save);
+    tcsetattr(0, TCSANOW, &save);
 }
