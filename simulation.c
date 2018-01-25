@@ -106,29 +106,29 @@ void collide(void){
 
 void out(){
  if(ball[i].pos.x>-ball[i].rad+1200){
-  ball[i].vel.y+=(ball[i].vel.y>0 ? -1:1)*ball[i].frc*ball[i].acc.x*p;
-  ball[i].vel.y+=-2*(ball[i].rad*ball[i].dps*M_PI/180+ball[i].vel.y)*ball[i].frc*F/5;
+  ball[i].vel.y+=(ball[i].vel.y>0 ? -1:1)*ball[i].frc*ball[i].acc.x/F*p;
+  ball[i].vel.y=(5*ball[i].vel.y-ball[i].dps*ball[i].rad*M_PI/90.0)/7.0;
   ball[i].dps=-ball[i].vel.y*180/M_PI/ball[i].rad;
   ball[i].pos.x=-ball[i].rad+1200;
   ball[i].vel.x=-ball[i].vel.x*ball[i].els;
  }
  else if(ball[i].pos.x<ball[i].rad-1200){
-  ball[i].vel.y+=(ball[i].vel.y>0 ? 1:-1)*ball[i].frc*ball[i].acc.x*p;
-  ball[i].vel.y+=2*(ball[i].rad*ball[i].dps*M_PI/180+ball[i].vel.y)*ball[i].frc*F/5;
+  ball[i].vel.y+=(ball[i].vel.y>0 ? 1:-1)*ball[i].frc*ball[i].acc.x/F*p;
+  ball[i].vel.y=(5*ball[i].vel.y+ball[i].dps*ball[i].rad*M_PI/90.0)/7.0;
   ball[i].dps=ball[i].vel.y*180/M_PI/ball[i].rad;
   ball[i].pos.x=ball[i].rad-1200;
   ball[i].vel.x=-ball[i].vel.x*ball[i].els;
  }
  if(ball[i].pos.y>-ball[i].rad+600){
-  ball[i].vel.x+=(ball[i].vel.x>0 ? -1:1)*ball[i].frc*ball[i].acc.y*p;
-  ball[i].vel.x+=2*(ball[i].rad*ball[i].dps*M_PI/180+ball[i].vel.x)*ball[i].frc*F/5;
+  ball[i].vel.x+=(ball[i].vel.x>0 ? -1:1)*ball[i].frc*ball[i].acc.y/F*p;
+  ball[i].vel.x=(5*ball[i].vel.x+ball[i].dps*ball[i].rad*M_PI/90.0)/7.0;
   ball[i].dps=ball[i].vel.x*180/M_PI/ball[i].rad;
   ball[i].pos.y=-ball[i].rad+600;
   ball[i].vel.y=-ball[i].vel.y*ball[i].els;
  }
   else if(ball[i].pos.y<ball[i].rad-600){
-  ball[i].vel.x+=(ball[i].vel.x>0 ? 1:-1)*ball[i].frc*ball[i].acc.y*p;
-  ball[i].vel.x+=-2*(ball[i].rad*ball[i].dps*M_PI/180+ball[i].vel.x)*ball[i].frc*F/5;
+  ball[i].vel.x+=(ball[i].vel.x>0 ? 1:-1)*ball[i].frc*ball[i].acc.y/F*p;
+  ball[i].vel.x=(5*ball[i].vel.x-ball[i].dps*ball[i].rad*M_PI/90.0)/7.0;
   ball[i].dps=-ball[i].vel.x*180/M_PI/ball[i].rad;
   ball[i].pos.y=ball[i].rad-600;
   ball[i].vel.y=-ball[i].vel.y*ball[i].els;
