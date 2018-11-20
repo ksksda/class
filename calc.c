@@ -100,7 +100,7 @@ int main(){
   /*入力・演算子識別*/
 
   /*計算*/
-   for(a=b=0;a<y;a++)if(arc[b].lyr>a)a=arc[a].lyr;
+   for(a=b=0;b<y;b++)if(arc[b].lyr>a)a=arc[b].lyr;
    for(;a>=0;a--){
     for(b=0;b<y;b++){
      if(arc[b].lyr==a){
