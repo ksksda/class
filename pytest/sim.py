@@ -70,7 +70,7 @@ def get_sens():
     sens = []
     angs = np.array([np.sin(posa),np.cos(posa)])
     for i in range(2):
-        sens.append(1 if -10 < sum((difs * angs)[i] + posy) < 10 else 0)
+        sens.append(1 if -10 < sum((difs * angs)[i]) + posy < 10 else 0)
     
     return sens
 
