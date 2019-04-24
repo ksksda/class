@@ -15,7 +15,7 @@ def get_action(next_state, episode):
         r = np.random.uniform(0, sum(np.array(q_table[next_state]) + 1))
         lim = 0
         for i in range(sim.action_fields):
-            lim += q_table[next_state][i]
+            lim += q_table[next_state][i] + 1
             if r < lim:
                 next_action = i
                 break
